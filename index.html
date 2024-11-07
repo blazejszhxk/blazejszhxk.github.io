@@ -1,0 +1,200 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>blazej xd</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .project-card {
+            transition: transform 0.3s ease;
+        }
+        .project-card:hover {
+            transform: scale(1.05);
+        }
+        .nav-button {
+            background-color: #1f2937;
+            color: #ffffff;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            font-size: 0.75rem;
+        }
+        .nav-button:hover {
+            background-color: #374151;
+            transform: scale(1.05);
+        }
+        .typing-text {
+            border-right: 2px solid;
+            white-space: nowrap;
+            overflow: hidden;
+            width: 0;
+            display: inline-block;
+            animation: typing 4s steps(40, end), blink-caret 0.75s step-end infinite;
+            animation-fill-mode: forwards;
+        }
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: white }
+        }
+        .reveal-text {
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+        .typing-container {
+            display: inline-block;
+            white-space: normal;
+            overflow: hidden;
+            width: 100%;
+        }
+        .typing-text p {
+            display: inline;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            const typingText = document.querySelector('.typing-text');
+            setTimeout(() => {
+                typingText.classList.remove('typing-text');
+            }, 4000);
+
+            const revealTextElements = document.querySelectorAll('.reveal-text');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        gsap.to(entry.target, {
+                            opacity: 1,
+                            x: 0,
+                            stagger: 0.05,
+                            delay: 0.02,
+                            duration: 1
+                        });
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            revealTextElements.forEach(element => {
+                observer.observe(element);
+            });
+        });
+    </script>
+</head>
+<body class="bg-gray-900 text-white">
+    <main class="container mx-auto mt-10 px-4 md:px-0">
+        <section class="text-center min-h-screen flex flex-col justify-center items-center border-b border-gray-700">
+            <div class="flex flex-col items-center">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Hi, I'm blazej </h1>
+                <div class="relative typing-container">
+                    <p class="text-lg md:text-xl mb-6 text-gray-300 typing-text">
+                        <span>A passionate developer who loves to</span>
+                        <br class="block md:hidden">
+                        <span> create amazing web experiences.</span>
+                    </p>
+                </div>
+                <div class="flex space-x-2 md:space-x-4 justify-center">
+                    <a class="nav-button" href="#about">About me</a>
+                    <a class="nav-button" href="#projects">Projects</a>
+                    <a class="nav-button" href="#contact">Contact</a>
+                </div>
+            </div>
+        </section>
+        <section class="min-h-screen flex flex-col justify-center items-start border-b border-gray-700 px-6" id="about">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4">About me.</h2>
+            <div class="reveal-text">
+                <p class="text-base md:text-lg mb-1 text-gray-300">I am Blazej, more known as szhxk, currently 19 years old, living in Poland.</p>
+            </div>
+            <div class="reveal-text">
+                <p class="text-base md:text-lg mb-1 text-gray-300">I have been programming since 2017, starting off with JavaScript with early Node.js v8.</p>
+            </div>
+            <div class="reveal-text">
+                <p class="text-base md:text-lg mb-1 text-gray-300">In my Developers life I have been working with a lot of programming languages such as TypeScript, Dart, C# and C++.</p>
+            </div>
+            <div class="reveal-text">
+                <p class="text-base md:text-lg mb-1 text-gray-300">I am currently focusing my development on React Framework written using TypeScript using a lot of useful tools such as Tailwind CSS.</p>
+            </div>
+            <div class="reveal-text">
+                <p class="text-base md:text-lg mb-1 text-gray-300">I used to write Android Apps in React Native and code the backend of all my apps using Node.js (express or Nest.js).</p>
+            </div>
+            <div class="reveal-text">
+                <p class="text-base md:text-lg mb-1 text-gray-300">Apart from programming I manage and moderate a lot of communities on platforms such as Discord (including bot development in Discord.js).</p>
+            </div>
+        </section>
+        <section class="min-h-screen flex flex-col justify-center items-start border-b border-gray-700 px-6" id="projects">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4">Projects:</h2>
+            <p class="text-lg md:text-xl mb-6 text-gray-300">Some of my public projects 😵</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4 w-full">
+                <div class="bg-gray-800 p-2 md:p-3 rounded-lg project-card">
+                    <h3 class="text-sm md:text-base font-bold mb-1">Project 1</h3>
+                    <p class="text-gray-400 mb-2 text-xs md:text-sm">A brief description of Project 1.</p>
+                    <a class="text-blue-500 hover:underline text-xs md:text-sm" href="#">Project 1 Page</a>
+                </div>
+                <div class="bg-gray-800 p-2 md:p-3 rounded-lg project-card">
+                    <h3 class="text-sm md:text-base font-bold mb-1">Project 2</h3>
+                    <p class="text-gray-400 mb-2 text-xs md:text-sm">A brief description of Project 2.</p>
+                    <a class="text-blue-500 hover:underline text-xs md:text-sm" href="#">Project 2 Page</a>
+                </div>
+                <div class="bg-gray-800 p-2 md:p-3 rounded-lg project-card">
+                    <h3 class="text-sm md:text-base font-bold mb-1">Project 3</h3>
+                    <p class="text-gray-400 mb-2 text-xs md:text-sm">A brief description of Project 3.</p>
+                    <a class="text-blue-500 hover:underline text-xs md:text-sm" href="#">Project 3 Page</a>
+                </div>
+                <div class="bg-gray-800 p-2 md:p-3 rounded-lg project-card">
+                    <h3 class="text-sm md:text-base font-bold mb-1">Project 4</h3>
+                    <p class="text-gray-400 mb-2 text-xs md:text-sm">A brief description of Project 4.</p>
+                    <a class="text-blue-500 hover:underline text-xs md:text-sm" href="#">Project 4 Page</a>
+                </div>
+                <div class="bg-gray-800 p-2 md:p-3 rounded-lg project-card">
+                    <h3 class="text-sm md:text-base font-bold mb-1">Project 5</h3>
+                    <p class="text-gray-400 mb-2 text-xs md:text-sm">A brief description of Project 5.</p>
+                    <a class="text-blue-500 hover:underline text-xs md:text-sm" href="#">Project 5 Page</a>
+                </div>
+                <div class="bg-gray-800 p-2 md:p-3 rounded-lg project-card">
+                    <h3 class="text-sm md:text-base font-bold mb-1">Project 6</h3>
+                    <p class="text-gray-400 mb-2 text-xs md:text-sm">A brief description of Project 6.</p>
+                    <a class="text-blue-500 hover:underline text-xs md:text-sm" href="#">Project 6 Page</a>
+                </div>
+            </div>
+        </section>
+        <section class="min-h-screen flex flex-col justify-center items-center" id="contact">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4 text-center">Contact me!</h2>
+            <div class="flex flex-col items-center space-y-4">
+                <div class="flex items-center space-x-2">
+                    <i class="fab fa-discord text-2xl text-blue-500"></i>
+                    <span class="text-lg text-gray-300">szhxk</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <a href="https://instagram.com/szhxk/" target="_blank" class="flex items-center space-x-2">
+                        <i class="fab fa-instagram text-2xl text-pink-600"></i>
+                        <span class="text-lg text-gray-300">szhxk</span>
+                    </a>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <a href="https://x.com/szhxk2" target="_blank" class="flex items-center space-x-2">
+                        <i class="fab fa-twitter text-2xl text-blue-400"></i>
+                        <span class="text-lg text-gray-300">szhxk2</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
