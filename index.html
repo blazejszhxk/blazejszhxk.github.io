@@ -110,9 +110,12 @@
             });
 
             const typingText = document.querySelector('.typing-text');
+            const isMobile = window.innerWidth <= 768;
+            const typingDuration = isMobile ? 2000 : 1500;
+
             setTimeout(() => {
                 typingText.classList.remove('typing-text');
-            }, 1500);
+            }, typingDuration);
 
             const revealTextElements = document.querySelectorAll('.reveal-text');
             const observer = new IntersectionObserver((entries) => {
