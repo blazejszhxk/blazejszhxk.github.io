@@ -1,0 +1,245 @@
+<html lang="en">
+<head>
+    <title>blazej.xyz</title>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta content="discover my socials." name="description">
+    <meta content="#7289da" name="theme-color">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <link href="favicon.ico" rel="icon">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .project-card {
+            transition: transform 0.3s ease;
+        }
+        .project-card:hover {
+            transform: scale(1.05);
+        }
+        .nav-button {
+            background-color: #1f2937;
+            color: #ffffff;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            font-size: 0.75rem;
+        }
+        .nav-button:hover {
+            background-color: #374151;
+            transform: scale(1.05);
+        }
+        .typing-text {
+            border-right: 2px solid;
+            white-space: nowrap;
+            overflow: hidden;
+            width: 0;
+            display: inline-block;
+            animation: typing 4s steps(40, end), blink-caret 0.75s step-end infinite;
+            animation-fill-mode: forwards;
+        }
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: white }
+        }
+        .reveal-text {
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+        .typing-container {
+            display: inline-block;
+            white-space: normal;
+            overflow: hidden;
+            width: 100%;
+        }
+        .typing-text p {
+            display: inline;
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #b4b5b8, #939496, #737475);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gradient-text-large {
+            background: linear-gradient(90deg, #b4b5b8, #939496, #737475);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 1.35em;
+        }
+        .light-green-text {
+            color: #51d651;
+        }
+        .light-red-text {
+            color: #ff6b6b;
+        }
+        .python-text {
+            background: linear-gradient(90deg, #306998, #FFD43B);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .discord-text {
+            background: linear-gradient(90deg, #7289DA, #99AAB5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .twitch-text {
+            background: linear-gradient(90deg, #7653b8, #9853fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .white-text {
+            color: #ffffff;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            const typingText = document.querySelector('.typing-text');
+            setTimeout(() => {
+                typingText.classList.remove('typing-text');
+            }, 1500);
+
+            const revealTextElements = document.querySelectorAll('.reveal-text');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        gsap.to(entry.target, {
+                            opacity: 1,
+                            x: 0,
+                            stagger: 0.05,
+                            delay: 0.02,
+                            duration: 1
+                        });
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            revealTextElements.forEach(element => {
+                observer.observe(element);
+            });
+
+            window.onbeforeunload = function () {
+                window.scrollTo(0, 0);
+            };
+        });
+    </script>
+</head>
+<body class="bg-gray-900 text-white">
+    <noscript>You need to enable JavaScript to run this page. Please enable or use another browser.</noscript>
+    <main class="container mx-auto mt-10 px-4 md:px-0">
+        <section class="text-center min-h-screen flex flex-col justify-center items-center border-b border-gray-700">
+            <div class="flex flex-col items-center">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Hi, I'm <span class="gradient-text-large">blazej</span></h1>
+                <div class="relative typing-container">
+                    <p class="text-lg md:text-xl mb-6 text-gray-300 typing-text">
+                        <span>„life is a death.”</span>
+                    </p>
+                </div>
+                <div class="flex space-x-2 md:space-x-4 justify-center">
+                    <a class="nav-button" href="#about">About me</a>
+                    <a class="nav-button" href="#projects">Projects</a>
+                    <a class="nav-button" href="#contact">Contact</a>
+                </div>
+            </div>
+        </section>
+        <section class="min-h-screen flex flex-col justify-center items-start border-b border-gray-700 px-6" id="about">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4">About me.</h2>
+            <div class="reveal-text">
+                <p class="text-base md:text-lg mb-1 text-gray-300">I’m <span class="gradient-text">blazej</span>, also known as <span class="gradient-text">szhxk</span>, currently <span class="light-red-text">19</span> years old.</p>
+            </div>
+            <div class="reveal-text mb-4">
+                <p class="text-base md:text-lg mb-1 text-gray-300">I spend most of my time on the Internet to acquire <span class="light-green-text">new knowledge</span>.</p>
+            </div>
+            <div class="reveal-text">
+                <p class="text-base md:text-lg mb-1 text-gray-300">I have been programming scripts for myself for several years, mostly in the <span class="python-text">Python</span>.</p>
+            </div>
+            <div class="reveal-text mb-4">
+                <p class="text-base md:text-lg mb-1 text-gray-300">Beyond programming, I manage several <span class="discord-text">Discord</span> servers and moderate <span class="twitch-text">Twitch</span> channels for: xntentacion, vysotzky, mamm0n, and others.</p>
+            </div>
+            <div class="reveal-text">
+                <p class="text-base md:text-lg mb-1 text-gray-300">If you haven't heard of me yet (and it's hard to be) then you've just learned a few (1%) things <span class="white-text">about me</span>.</p>
+            </div>
+            <div class="reveal-text mb-4">
+                <p class="text-base md:text-lg mb-1 text-gray-300">
+		    <a href="https://www.youtube.com/watch?v=C-5P8PSk_oM" class="text-blue-500 hover:underline" target="_blank">	
+			https://www.youtube.com/watch?v=C-5P8PSk_oM
+		    </a>
+		</p>
+            </div>
+        </section>
+        <section class="min-h-screen flex flex-col justify-center items-start border-b border-gray-700 px-6" id="projects">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4">Projects:</h2>
+            <p class="text-lg md:text-xl mb-6 text-gray-300">Some of my projects 😵</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4 w-full">
+                <div class="bg-gray-800 p-2 md:p-3 rounded-lg project-card">
+                    <h3 class="text-sm md:text-base font-bold mb-1">blazej_bot 👑</h3>
+                    <p class="text-gray-400 mb-2 text-xs md:text-sm">A <span class="twitch-text">Twitch</span> bot for League of Legends players, currently on: xayoo_, vysotzky, mamm0n, and more.</p>
+                    <a class="text-blue-500 hover:underline text-xs md:text-sm" href="https://twitch.tv/blazej_bot" target="_blank">Twitch Profile</a>
+                </div>
+                <div class="bg-gray-800 p-2 md:p-3 rounded-lg project-card">
+                    <h3 class="text-sm md:text-base font-bold mb-1">@Azyl</h3>
+                    <p class="text-gray-400 mb-2 text-xs md:text-sm">A <span class="discord-text">Discord</span> multi-purpose bot for my server, managing booster roles, info commands, and moderation tools.</p>
+                    <a class="text-blue-500 hover:underline text-xs md:text-sm" href="https://discord.gg/azyl" target="_blank">Discord Server</a>
+                </div>
+                <div class="bg-gray-800 p-2 md:p-3 rounded-lg project-card">
+                    <h3 class="text-sm md:text-base font-bold mb-1">Thief reward (VIP)</h3>
+                    <p class="text-gray-400 mb-2 text-xs md:text-sm">A <span class="twitch-text">Twitch</span> script that processes channel points redemptions, and manages VIPs for vysotzky.</p>
+                    <a class="text-blue-500 hover:underline text-xs md:text-sm" href="https://twitch.tv/vysotzky" target="_blank">Twitch Channel</a>
+                </div>
+                <div class="bg-gray-800 p-2 md:p-3 rounded-lg project-card hidden md:block">
+                    <h3 class="text-sm md:text-base font-bold mb-1">soon ...</h3>
+                    <p class="text-gray-400 mb-2 text-xs md:text-sm">soon ???</p>
+                    <a class="text-blue-500 hover:underline text-xs md:text-sm" href="#" target="_blank">...</a>
+                </div>
+                <div class="bg-gray-800 p-2 md:p-3 rounded-lg project-card hidden md:block">
+                    <h3 class="text-sm md:text-base font-bold mb-1">soon ???</h3>
+                    <p class="text-gray-400 mb-2 text-xs md:text-sm">soon ...</p>
+                    <a class="text-blue-500 hover:underline text-xs md:text-sm" href="#" target="_blank">???</a>
+                </div>
+                <div class="bg-gray-800 p-2 md:p-3 rounded-lg project-card hidden md:block">
+                    <h3 class="text-sm md:text-base font-bold mb-1">soon ...</h3>
+                    <p class="text-gray-400 mb-2 text-xs md:text-sm">soon ???</p>
+                    <a class="text-blue-500 hover:underline text-xs md:text-sm" href="#" target="_blank">...</a>
+                </div>
+            </div>
+        </section>
+        <section class="min-h-screen flex flex-col justify-center items-center" id="contact">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4 text-center">Contact me!</h2>
+            <div class="flex flex-col items-center space-y-4">
+                <div class="flex items-center space-x-2">
+                    <i class="fab fa-discord text-2xl text-blue-500"></i>
+                    <span class="text-lg text-gray-300">szhxk</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <a href="https://instagram.com/szhxk/" target="_blank" class="flex items-center space-x-2">
+                        <i class="fab fa-instagram text-2xl text-pink-600"></i>
+                        <span class="text-lg text-gray-300">szhxk</span>
+                    </a>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <a href="https://x.com/szhxk2" target="_blank" class="flex items-center space-x-2">
+                        <i class="fab fa-twitter text-2xl text-blue-400"></i>
+                        <span class="text-lg text-gray-300">szhxk2</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
